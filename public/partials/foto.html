@@ -1,1 +1,30 @@
-<h1>Cadastro de Fotos</h1>
+<div class="page-header text-center">
+    <h1>{{foto.titulo}}</h1>
+
+</div>
+<p class="alert alert-danger" ng-show="mensagem.length"><{{mensagem}}/p>
+<form name="formulario" class="row" ng-submit="submeter()" novalidate>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Titulo</label>
+            <input class="form-control" ng-model="foto.titulo" name="titulo" required ng-maxlength="20">
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required">Titulo Obrigatorio</span>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.maxlength">Titulo não pode ultrapassar 20 caracteres</span>
+        </div>
+        <div class="form-group">
+            <label>URL</label>
+            <input class="form-control" ng-model="foto.url" name="url" required>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.url.$error.required">URL obrigatoria</span>
+        </div>
+        <div class="form-group">
+            <label>Descricao</label>
+            <textarea class="form-control" ng-model="foto.descricao" name="descricao"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" ng-disabled="formulario.$invalid">Salvar</button>
+        <a href="/" class="btn btn-primary">Voltar</a>
+        <hr>
+    </div>
+    <div class="col-md-6">
+        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
+    </div>
+</form>
