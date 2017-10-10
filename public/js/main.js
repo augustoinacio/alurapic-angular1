@@ -1,4 +1,4 @@
-angular.module('alurapic',['minhasDiretivas','ngAnimate','ngRoute'])
+angular.module('alurapic',['minhasDiretivas','ngAnimate','ngRoute','meusServicos'])
 .config(function($routeProvider){
     $routeProvider.when('/fotos', {
         templateUrl: 'partials/principal.html',
