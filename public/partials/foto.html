@@ -2,7 +2,7 @@
     <h1>{{foto.titulo}}</h1>
 
 </div>
-<p class="alert alert-danger" ng-show="mensagem.length"><{{mensagem}}/p>
+<p class="alert alert-danger" ng-show="mensagem.length">{{mensagem}}</p>
 <form name="formulario" class="row" ng-submit="submeter()" novalidate>
     <div class="col-md-6">
         <div class="form-group">
@@ -18,13 +18,21 @@
         </div>
         <div class="form-group">
             <label>Descricao</label>
-            <textarea class="form-control" ng-model="foto.descricao" name="descricao"></textarea>
+            <textarea class="form-control" ng-model="foto.descricao" name="descricao"> </textarea>
         </div>
+        <form class="form-group">
+            <label>Grupo</label>
+            <select name="grupo" class="form-control" ng-controller="GruposController" ng-model="foto.grupo" ng-options="grupo._id as (grupo.nome|uppercase) for grupo in grupos"
+                required>
+                <option value=""> Selecione o Grupo</option>
+            </select>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.grupo.$error.required">Grupo obrigatoria</span>
+        </form>
         <button class="btn btn-primary" type="submit" ng-disabled="formulario.$invalid">Salvar</button>
         <a href="/" class="btn btn-primary">Voltar</a>
         <hr>
     </div>
     <div class="col-md-6">
-        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
+        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"> </minha-foto>
     </div>
 </form>
